@@ -42,10 +42,9 @@ export function receiveGif(data) {
   };
 }
 
-export function likeGif() {
-  return (dispatch, getState) => {
-    const { current, searchTerm } = getState();
-    if (current.filter(gif => gif.searchTerm === searchTerm
+export function likeGif(current, searchTerm, liked) {
+   return dispatch => {
+    if (liked.filter(gif => gif.searchTerm === searchTerm
     ).length) {
       dispatch(showError({ message: 'You can only like one GIF per search term'}));
     } else {

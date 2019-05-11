@@ -16,13 +16,17 @@ class Home extends Component {
     this.ref = createRef();
   }
 
-  handleSearchClick = (searchTerm) => {
+  handleSearchClick = searchTerm => {
     const { fetchGif, weirdness } = this.props;
     fetchGif(searchTerm, weirdness);
-  }
+  };
 
-  handleCalculateClick = (e) => {
-    e.preventDefault();
+  handleCalculateClick = e => {
+  };
+
+  handleLikeClick = () => {
+    const { current, searchTerm, liked, likeGif } = this.props;
+    likeGif(current, searchTerm, liked);
   }
 
   render() {
@@ -30,14 +34,17 @@ class Home extends Component {
       <section className="homeContainer">
         <div className="leftColumn">
           <SearchBox onSearchClick={this.handleSearchClick} ref={this.ref} />
-          <span class="error">{this.props.error}</span>
+          <span className="error">{this.props.error}</span>
           <FetchedGif
             url={this.props.current.url}
             title={this.props.current.title}
+            handleLike={this.handleLikeClick}
+            disabled={!this.props.current.id || this.props.alreadyLiked}
+            alreadyLiked={this.props.alreadyLiked}
           />
         </div>
         <div className="rightColumn">
-          <LikedGifs handleLike={this.props.likeGif} disabled={this.props.alreadyLiked} />
+          <LikedGifs />
         </div>
       </section>
     );

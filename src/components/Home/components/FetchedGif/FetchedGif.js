@@ -1,15 +1,15 @@
 import React from 'react';
 import './fetchedGif.css';
 
-const FetchedGif = ({ title, url, alreadyLiked, handleLike }) => (
+const FetchedGif = ({ title, url, alreadyLiked, disabled, handleLike }) => (
   <section className="searchResult">
     <h2>Your Result</h2>
 
     <div className="currentGif">
       <h5>{title}</h5>
       <img src={url} title={title} alt={title} />
-      <button className="likeButton" onClick={handleLike} disabled={alreadyLiked}>
-        <span role="img" aria-label="like this gif">&#128077;</span>
+      <button className="likeButton" onClick={handleLike} disabled={disabled}>
+        Like
       </button>
       {alreadyLiked && <p>Enter a new search term</p>}
     </div>
