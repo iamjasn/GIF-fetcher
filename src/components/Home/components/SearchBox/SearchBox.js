@@ -2,9 +2,7 @@ import React, { forwardRef } from 'react';
 import './SearchBox.css';
 
 const SearchBox = forwardRef((props, ref) => {
-  function handleSearchClick(e) {
-    e.preventDefault();
-
+  function handleSearchClick() {
     props.onSearchClick(ref.current.value);
   }
 
@@ -19,8 +17,8 @@ const SearchBox = forwardRef((props, ref) => {
 
       <div>
         <label htmlFor="giphy-search">Search term</label>
-        <input type="search" id="giphy-search" ref={ref}></input>
-        <button onClick={handleSearchClick}>Search</button>
+        <input className="searchInput" type="search" id="giphy-search" ref={ref}></input>
+        <button onClick={handleSearchClick} className="searchButton">Search</button>
       </div>
     </section>
   );

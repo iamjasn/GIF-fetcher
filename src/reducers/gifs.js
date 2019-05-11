@@ -1,4 +1,4 @@
-import { REQUEST_GIF, RECEIVE_GIF, LIKE_GIF, UNLIKE_GIF, SHOW_RESULTS, SHOW_ERROR } from '../actions/actions';
+import { REQUEST_GIF, RECEIVE_GIF, ADD_GIF, UNLIKE_GIF, SHOW_RESULTS, SHOW_ERROR } from '../actions/actions';
 
 const initialState = {
   current: { url: null, title: null, id: null },
@@ -7,7 +7,7 @@ const initialState = {
   liked: [],
   score: null,
   searchTerm: "",
-  weirdness: 1
+  weirdness: 0
 };
 
 export default (state = initialState, action) => {
@@ -17,6 +17,7 @@ export default (state = initialState, action) => {
         ...state,
         searchTerm: action.payload.searchTerm,
         weirdness: action.payload.weirdness,
+        error: initialState.error,
         isFetching: true
       };
 
@@ -26,7 +27,7 @@ export default (state = initialState, action) => {
     case SHOW_RESULTS:
       return { ...state, score: action.payload };
 
-    case LIKE_GIF:
+    case ADD_GIF:
       return {
         ...state,
         liked: [...state.liked, action.payload],

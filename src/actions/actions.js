@@ -6,12 +6,18 @@ export const REQUEST_GIF = "REQUEST_GIF";
 export const RECEIVE_GIF = "RECEIVE_GIF";
 export const LIKE_GIF = "LIKE_GIF";
 export const UNLIKE_GIF = "UNLIKE_GIF";
+export const ADD_GIF = "ADD_GIF";
 export const SHOW_RESULTS = "SHOW_RESULTS";
 export const SHOW_ERROR = "SHOW_ERROR";
 
 export function fetchGif(searchTerm, weirdness) {
   return dispatch => {
+    if (!searchTerm) {
+      return dispatch(showError({ message: 'Please enter a search term' }));
+    }
+
     dispatch(requestGif(searchTerm, weirdness));
+
     return axios
       .get(`${getUrl}&s=${searchTerm}&weirdness=${weirdness}`)
       .then(({ data: { data }}) => {
@@ -36,9 +42,21 @@ export function receiveGif(data) {
   };
 }
 
-export function likeGif(item) {
+export function likeGif() {
+  return (dispatch, getState) => {
+    const { current, searchTerm } = getState();
+    if (current.filter(gif => gif.searchTerm === searchTerm
+    ).length) {
+      dispatch(showError({ message: 'You can only like one GIF per search term'}));
+    } else {
+      dispatch(addGif({ ...current, searchTerm }))
+    }
+  }
+}
+
+export function addGif(item) {
   return {
-    type: LIKE_GIF,
+    type: ADD_GIF,
     payload: item
   };
 }

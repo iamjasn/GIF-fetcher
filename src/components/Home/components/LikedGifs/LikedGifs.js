@@ -12,12 +12,13 @@ class LikedGifs extends Component {
     // dispatch unlike(gif)
   }
 
+
   render() {
     return (
       <div>
         <h2>Your Liked GIFs</h2>
         <ul>
-          {this.props.likedGifs.map(gif => (
+          {this.props.liked.map(gif => (
             <li>
               <div className="gifContainer">
                 <h3>{gif.title}</h3>
@@ -27,8 +28,14 @@ class LikedGifs extends Component {
             </li>
           ))}
         </ul>
-        <button onClick={this.handleCalculate}>Calculate My Weirdness Score</button>
-        <p>You must <em>Like</em> more GIF to calculate your score</p>
+        <button disabled={this.props.liked.length < 5} onClick={this.handleCalculate}>
+          Calculate My Weirdness Score
+        </button>
+        { this.props.liked.length < 5 &&
+          <p>
+            You must <em>Like</em> {this.props.liked.length} more GIFs to calculate your score
+          </p>
+        }
       </div>
     );
   }
@@ -36,7 +43,7 @@ class LikedGifs extends Component {
 
 const mapStateToProps = state => {
   return {
-    likedGifs: state.gifs.liked
+    liked: state.gifs.liked
   };
 };
 

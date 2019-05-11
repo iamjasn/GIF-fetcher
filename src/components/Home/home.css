@@ -1,0 +1,19 @@
+.homeContainer {
+  display: flex;
+}
+
+.homeContainer section {
+  padding: 2rem;
+}
+
+.leftColumn {
+  width: 60%;
+}
+
+.rightColumn {
+  width: 40%;
+}
+
+.searchResult {
+  border-top: 1px solid lightgray;
+}

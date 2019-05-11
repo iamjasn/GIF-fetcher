@@ -1,0 +1,30 @@
+.searchInput {
+  margin: 5px 0;
+  padding: 5px 10px;
+  width: 175px;
+}
+
+label[for="giphy-search"] {
+  display: block;
+  font-size: .75rem;
+  color: #989595;
+  text-indent: 2px;
+}
+
+.searchButton {
+  appearance: none;
+  padding: 6px 10px;
+  margin-left: -12px;
+  border: 1px solid #989595;
+  background: #989595;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 250ms;
+}
+
+.searchButton:hover {
+  background: #c1c0c0;
+  border: 1px solid #c1c0c0;
+  color: #000;
+}

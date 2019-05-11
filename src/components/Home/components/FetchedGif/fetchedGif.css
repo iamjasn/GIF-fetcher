@@ -1,3 +1,33 @@
-searchResult img {
-  max-width: 200px;
+.currentGif {
+  max-width: 350px;
+  margin: auto;
+}
+
+.currentGif > h5 {
+  margin-block-end: 0px;
+  margin-block-start: 0px;
+  text-align: center;
+  margin-block-end: 1rem;
+  text-transform: capitalize;
+}
+
+.currentGif > img {
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 250px;
+}
+
+.likeButton {
+  display: block;
+  appearance: none;
+  border: 0;
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+input[type="range"] {
+  width: 100%;
 }
