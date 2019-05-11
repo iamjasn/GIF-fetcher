@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import './LikedGifs.css';
 
 const MIN_GIFS = 5;
 
 class LikedGifs extends Component {
-  handleCalculate = e => {
+  handleCalculate = () => {
+    this.props.history.push('/results');
   }
 
   handleUnlike = e => {
@@ -46,7 +48,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   {}
-)(LikedGifs);
+)(LikedGifs));
