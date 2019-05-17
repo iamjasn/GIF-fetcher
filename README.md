@@ -1,4 +1,4 @@
-# Giphy Weirdness Calculator
+# GIF fetcher using the Giphy API
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
